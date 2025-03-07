@@ -1,9 +1,9 @@
-from .User import User
+from ..Clases.User import User
 from firebase.config import db
 
 class UserDAO:
     @staticmethod
-    def addUser(uid, nombre, id, rol):
+    def add_user(uid, nombre, id, rol):
         db.collection("usuarios").document(uid).set({
             "nombre": nombre,
             "id": id,
@@ -12,7 +12,7 @@ class UserDAO:
         print(f"Usuario {nombre} agregado con éxito.")
 
     @staticmethod
-    def getUser(uid):
+    def get_user(uid):
         """Obtiene un usuario por su UID."""
         doc = db.collection("usuarios").document(uid).get()
         if doc.exists:
